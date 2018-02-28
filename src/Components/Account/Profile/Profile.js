@@ -9,7 +9,7 @@ class Profile extends Component {
     const { match } = this.props;
     return(
       <div>
-        <h3>Profile Page!!! Wlelcome {match.params.id}</h3>
+        <h3>Profile Page!!! Welcome {match.params.id}</h3>
       </div>
     );
   }

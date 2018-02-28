@@ -37,7 +37,10 @@ mongoose.connect('mongodb://localhost:27017/appdb')
 .catch((err) => console.log(err));
 
 // view engine
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
+
+// dev:view, deploy:public
+app.use(express.static(path.join(__dirname, 'views')));
 app.set('view engine', 'ejs')
 
 // bodyParser
@@ -68,8 +71,7 @@ app.use(expressSession);
 app.use(passport.initialize());
 app.use(passport.session());
 
-// dev:view, deploy:public
-app.use(express.static(path.join(__dirname, 'views')));
+
 
 app.use('/api', api);
 app.use('/api/users', user);

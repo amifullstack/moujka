@@ -23,4 +23,28 @@ router.post('/register', (req, res) => {
   });
 });
 
+// Post to /login
+router.post('/login', (req, res) => {
+  passport.authenticate('local')(req, res, () => {
+    // If logged in, we should have user info to send back
+    if(req.user) {
+      return res.send(JSON.stringify(req.user));
+    }
+
+    // Otherwise return error
+    else{
+      return res.send(JSON.stringify({ error: 'There was an error loggin in' }));
+    }
+  })
+})
+
+// Post to /logout
+router.get('/logout', (req, res) => {
+  // console.log(req.user);
+  req.logout();
+  // console.log(req.user);
+  return res.send(JSON.stringify(req.user));
+  console.log(req.user);
+})
+
 module.exports = router;
