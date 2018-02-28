@@ -87,3 +87,22 @@ Welcome To Redux
 
 
 
+## Authentication using Passport.js
+
+> Test with `Postman` ATM, We haven't built UI yet
+
+        POST|^| http://localhost:3000/api/authentication/register
+
+        Body(0)
+        raw(0)
+        {
+                "username": "sanjayshr",
+                "password": "Its going hashed",
+                "firstname": "sanjay",
+                "lastname": "shr",
+                "email": "nerd@moujka.com"
+
+        }
+
+        and check out the same response!!
+        

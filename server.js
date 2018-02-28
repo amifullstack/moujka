@@ -7,7 +7,16 @@ const bodyParser = require('body-parser');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.babel');
 const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const expressSession = require('express-session')({
+  secret: 'you never guessed this lol',
+  resave: false,
+  saveUninitialized: false,
+})
+
+// Models
+const User = require('./models/User');
+
 
 const PORT = 3000
 
@@ -16,6 +25,8 @@ const index = require('./routes/index');
 // api
 const api = require('./routes/api/index');
 const user = require('./routes/api/users');
+// Auth
+const authenticate = require('./routes/api/authentication');
 
 
 const app = express();
@@ -33,8 +44,8 @@ app.set('view engine', 'ejs')
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false}))
 // parse application/json
-app.use(bodyParser.json());
-// app.use(bodyParser.json({type: 'application/json'}));
+// app.use(bodyParser.json());
+app.use(bodyParser.json({type: 'application/json'}));
 
 // Webpack Server
 if (process.env.NODE_ENV !== 'production') {
@@ -52,13 +63,8 @@ app.use(webpackHotMiddleware(webpackCompiler, {
 }));
 }
 
-
+app.use(expressSession);
 // passport
-app.use(require('express-session')({
-  secret: 'you never guessed this lol',
-  resave: false,
-  saveUninitialized: false
-}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -67,11 +73,10 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/api', api);
 app.use('/api/users', user);
+app.use('/api/authentication', authenticate);
 app.use('/*', index)
 
 // Configure passport
-const User = require('./models/User');
-
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
