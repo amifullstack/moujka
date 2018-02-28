@@ -20,8 +20,8 @@ const todo = (state = initialState, action) => {
 
     case REMOVE_TODO:
       return {
-        todos: state.todos.filter(item => action.payload !== item)}
-
+        todos: state.todos.filter(item => action.payload !== item)
+      }
     
     default:
       return state;
