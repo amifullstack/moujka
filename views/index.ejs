@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: fonts.gstatic.com;">
+
+  <% if (process.env.NODE_ENV === 'production') { %>
+    <link rel="stylesheet" href="/stylesheets/style-prod.css" />
+    <% } else { %>
+      <link rel="stylesheet" href="/stylesheets/style.css" />
+      <% } %>
+   
+  
+  <title>ERM-FullStack</title>
+</head>
+<body>
+  <div id="root">
+        <code>Loading react app...</code>
+  </div>
+  
+</body>
+<!-- react Script -->
+<% if (process.env.NODE_ENV === 'production') { %>
+  <script src="/javascripts/build-prod.js"></script>
+  <% } else { %>
+    <script src="/javascripts/build.js"></script>
+  <% }  %>
+</html>
