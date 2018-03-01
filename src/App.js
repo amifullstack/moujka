@@ -19,8 +19,8 @@ import Footer from './Components/Shared/Footer/Footer';
 import './App.css'
 
 // // Temp Redux
-import { addTodo, removeTodo, incrementValue } from './Actions/index'
-import Store from './Store/Store'
+// import { addTodo, removeTodo, incrementValue } from './Actions/index'
+// import Store from './Store/Store'
 
 class App extends Component {
   constructor(props) {
@@ -28,9 +28,9 @@ class App extends Component {
   }
 
   render() {
-    window.store = Store;
-    window.addTodo = addTodo;
-    window.removeTodo = removeTodo;
+    // window.store = Store;
+    // window.addTodo = addTodo;
+    // window.removeTodo = removeTodo;
 
     return(
       <Router>
