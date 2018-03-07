@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 
 // Components
-import Header from '../Shared/Header/Header';
-import Profile from '../Account/Profile/Profile';
-import Footer from '../Shared/Footer/Footer';
 import ProgressContainer from '../Progress/ProgressContainer';
 
 class Home extends Component {
@@ -12,8 +9,7 @@ class Home extends Component {
     super(props);
   }
 
-  render() {
-    // console.log(this.props)
+  render() {    
     const { incrementValue, decrementValue } = this.props;
     return(
       <div>

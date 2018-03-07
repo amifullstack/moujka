@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import App from './App';
 
 
-const mapStateToProps = state => {
+const mapStateToProps = state => {  
   return {
-    state: state.todo
+    state: state
   };
 }
 
-const MyAppContainer = props => {
+const MyAppContainer = props => { 
+  // console.log(props.state)     
   return(
     <App state={props.state}/>
   )

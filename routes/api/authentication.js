@@ -1,8 +1,12 @@
 const express = require('express');
 const passport = require('passport');
+const mongoose = require('mongoose');
 const User = require('../../models/User.js');
 
 const router = express.Router();
+
+// configure mongose promises
+mongoose.Promise = global.Promise;
 
 
 // Post to /register
@@ -24,7 +28,14 @@ router.post('/register', (req, res) => {
 });
 
 // Post to /login
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
+  // look up the user by their email
+  const query = User.findOne({ email: req.body.email });
+  const foundUser = await query.exec();
+
+  // if they exist they'll have the user name, so add that to our body
+  if(foundUser) { req.body.username = foundUser.username}
+  
   passport.authenticate('local')(req, res, () => {
     // If logged in, we should have user info to send back
     if(req.user) {

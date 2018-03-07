@@ -1,4 +1,5 @@
-const express = require('express')
+require('babel-register')
+const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;

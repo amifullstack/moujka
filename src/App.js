@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import HomePageContainer from './Components/Home/HomePageContainer';
 import Header from './Components/Shared/Header/Header';
 import Profile from './Components/Account/Profile/Profile';
-import LoginPage from './Components/Account/LoginPage/LoginPage';
+// import LoginPage from './Components/Account/LoginPage/LoginPage';
+import LoginPageContainer from './Components/Account/LoginPage/LoginPageContainer/LoginPageContainer';
 
 import TodoContainer from './Components/Todo/TodoContainer';
 import AddTodoForm from './Components/Todo/AddTodoForm/AddTodoForm';
@@ -30,7 +31,8 @@ class App extends Component {
   render() {
     // window.store = Store;
     // window.addTodo = addTodo;
-    // window.removeTodo = removeTodo;
+    // window.removeTodo = removeTodo; 
+    // console.log(this.props)   
 
     return(
       <Router>
@@ -39,7 +41,7 @@ class App extends Component {
           <Route exact path="/" component={HomePageContainer} />
             <p>  Beats From Cloud</p>
           <Route path="/account/profile/:id" component={Profile} />
-          <Route path="/login" component={LoginPage} />
+          <Route path="/login" component={LoginPageContainer} />
           <Route path='/todo' component={TodoContainer} />
           <Route path='/progress' component={ProgressContainer} />
           {/* <AddTodoForm />
