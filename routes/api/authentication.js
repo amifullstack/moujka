@@ -8,7 +8,6 @@ const router = express.Router();
 // configure mongose promises
 mongoose.Promise = global.Promise;
 
-
 // Post to /register
 router.post('/register', (req, res) => {
   // create new user object to save, using value from coming json 

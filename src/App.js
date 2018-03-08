@@ -32,7 +32,7 @@ class App extends Component {
     // window.store = Store;
     // window.addTodo = addTodo;
     // window.removeTodo = removeTodo; 
-    // console.log(this.props)   
+    console.log(this.props)
 
     return(
       <Router>
