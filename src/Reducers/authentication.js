@@ -1,7 +1,9 @@
 import { 
   AUTHENTICATION_LOGIN_ATTEMPT, 
   AUTHENTICATION_LOGIN_SUCCESS,
-  AUTHENTICATION_LOGIN_FAILURE
+  AUTHENTICATION_LOGIN_FAILURE,
+  AUTHENTICATION_SESSION_CHECK_SUCCESS,
+  AUTHENTICATION_SESSION_CHECK_FAILURE,
 } from '../Actions/authentication'
 
 
@@ -22,7 +24,8 @@ const authenticationReducer = (state = InitialState, action) => {
       newState.isLoggingIn = true;
       return newState;
     }
-    case AUTHENTICATION_LOGIN_SUCCESS: {
+    case AUTHENTICATION_LOGIN_SUCCESS:
+    case AUTHENTICATION_SESSION_CHECK_SUCCESS: {
       const newState = Object.assign({}, state);
       newState.id = action.json._id;
       newState.firstName = action.json.firstName;
@@ -32,15 +35,9 @@ const authenticationReducer = (state = InitialState, action) => {
       newState.username = action.json.username;
       return newState;
     }
-    case AUTHENTICATION_LOGIN_FAILURE: {
-      const newState = {
-        firstName: '',
-        id: '', 
-        isLoggedIn: false,
-        isLoggingIn: false,
-        lastName: '',
-        username: '',
-      };
+    case AUTHENTICATION_LOGIN_FAILURE:
+    case AUTHENTICATION_SESSION_CHECK_FAILURE: {
+      const newState = Object.assign({}, state);
       return newState;
     }
     

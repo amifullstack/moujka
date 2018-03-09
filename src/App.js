@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     // window.store = Store;
     // window.addTodo = addTodo;
-    // window.removeTodo = removeTodo; 
+    // window.removeTodo = removeTodo;
     // console.log(this.props)
     const { authenticationReducer, Progress } = this.props.state;
     // console.log(authenticationReducer)
