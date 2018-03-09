@@ -64,7 +64,7 @@ router.get('/logout', (req, res) => {
   req.logout();
   // console.log(req.user);
   return res.send(JSON.stringify(req.user));
-  console.log(req.user);
+  // console.log(req.user);
 })
 
 module.exports = router;

@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 // Components
 import HomePageContainer from './Components/Home/HomePageContainer';
-import Header from './Components/Shared/Header/Header';
+import HeaderContainer from './Components/Shared/Header/HeaderContainer';
 import Profile from './Components/Account/Profile/Profile';
 // import LoginPage from './Components/Account/LoginPage/LoginPage';
 import LoginPageContainer from './Components/Account/LoginPage/LoginPageContainer/LoginPageContainer';
@@ -40,9 +40,9 @@ class App extends Component {
     return(
       <Router>
         <div className="App">
-          <Header authentication={authenticationReducer} />
-          <Route exact path="/" component={HomePageContainer}  />            
-          <Spinner Progress={Progress} />        
+          <HeaderContainer authentication={authenticationReducer} />
+          <Route exact path="/" component={HomePageContainer}  />
+          <Spinner Progress={Progress} />
           <Route path="/account/profile/:id" component={Profile} />
           <Route path="/login" component={LoginPageContainer} />
           <Route path='/todo' component={TodoContainer} />

@@ -4,6 +4,8 @@ import {
   AUTHENTICATION_LOGIN_FAILURE,
   AUTHENTICATION_SESSION_CHECK_SUCCESS,
   AUTHENTICATION_SESSION_CHECK_FAILURE,
+  AUTHENTICATION_LOGOUT_SUCCESS,
+  AUTHENTICATION_LOGOUT_FAILURE,
 } from '../Actions/authentication'
 
 
@@ -36,9 +38,15 @@ const authenticationReducer = (state = InitialState, action) => {
       return newState;
     }
     case AUTHENTICATION_LOGIN_FAILURE:
-    case AUTHENTICATION_SESSION_CHECK_FAILURE: {
+    case AUTHENTICATION_SESSION_CHECK_FAILURE: 
+    case AUTHENTICATION_LOGOUT_SUCCESS:
+    {
       const newState = Object.assign({}, state);
       return newState;
+    }
+    case AUTHENTICATION_LOGOUT_FAILURE: {
+      // todo: handle error!
+      return state;
     }
     
     default: {

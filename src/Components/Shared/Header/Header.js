@@ -4,25 +4,34 @@ import { Link } from 'react-router-dom';
 // CSS
 import './Header.css'
 
-const renderLogin = () => {
-  return(  
-      
-        <Link to='/login'>Log In</Link>
-      
-    
-  )
-}
-
-const renderGreeting = name => <Link to="/account/profile/Sanjay">Welcome, {name}</Link>
+const renderLogin = () => <Link to='/login'>Log In</Link>  
 
 class Header extends Component {
   constructor(props) {
     super(props);
   }
 
+
+logOutClick = e => {
+  e.preventDefault();  
+  const { logUserOut } = this.props;  
+  logUserOut();
+}
+
+renderGreeting = name => {
+  return(
+    <li>
+  <Link to="/account/profile/Sanjay">Welcome, {name}</Link>
+  <a href="/logout" onClick={ (e) => this.logOutClick(e)}>Log Out</a>
+  
+  </li>
+  )} 
+
+  
+
   render() {
     const { isLoggedIn, username } = this.props.authentication;
-    console.log(username)
+    console.log(isLoggedIn)
     
     return(
       
@@ -35,10 +44,10 @@ class Header extends Component {
                 <li>
                 <Link to="/account/profile/Sanjay">Profile</Link> 
                 </li>
-                <li>
+                
                   {/* <Link to="/login">Login</Link> */}
-                  { isLoggedIn ? renderGreeting(username) : renderLogin() }
-                </li>
+                  { isLoggedIn ? this.renderGreeting(username) : renderLogin() }
+                
               </ul>         
         </header>      
     );
