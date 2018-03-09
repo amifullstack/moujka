@@ -14,6 +14,7 @@ import TodoContainer from './Components/Todo/TodoContainer';
 import AddTodoForm from './Components/Todo/AddTodoForm/AddTodoForm';
 import ProgressContainer from './Components/Progress/ProgressContainer';
 
+import Spinner from './Components/Shared/Spinner/Spinner';
 import Footer from './Components/Shared/Footer/Footer';
 
 // css
@@ -32,14 +33,16 @@ class App extends Component {
     // window.store = Store;
     // window.addTodo = addTodo;
     // window.removeTodo = removeTodo; 
-    console.log(this.props)
+    // console.log(this.props)
+    const { authenticationReducer, Progress } = this.props.state;
+    // console.log(authenticationReducer)
 
     return(
       <Router>
-        <div className="App">        
-          <Header/>
-          <Route exact path="/" component={HomePageContainer} />
-            <p>  Beats From Cloud</p>
+        <div className="App">
+          <Header authentication={authenticationReducer} />
+          <Route exact path="/" component={HomePageContainer}  />            
+          <Spinner Progress={Progress} />        
           <Route path="/account/profile/:id" component={Profile} />
           <Route path="/login" component={LoginPageContainer} />
           <Route path='/todo' component={TodoContainer} />

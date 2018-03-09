@@ -10,12 +10,10 @@ class Home extends Component {
   }
 
   render() {    
-    const { incrementValue, decrementValue } = this.props;
+    // const { incrementValue, decrementValue } = this.props;    
     return(
       <div>
-        <ProgressContainer />
-        <button onClick={ incrementValue}>Increment</button>
-        <button onClick={ decrementValue}>Decrement</button>
+        <p>Home Page Container</p>        
       </div>
     )
   }

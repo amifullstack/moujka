@@ -5,7 +5,7 @@ import Home from './Home';
 
 import { incrementValue, decrementValue } from '../../Actions/index';
 
-const mapDispatchToProps = dispatch => {  
+const mapDispatchToProps = dispatch => {    
   return bindActionCreators({
     incrementValueAction: incrementValue,
     decrementValueAction: decrementValue

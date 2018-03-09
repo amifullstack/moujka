@@ -9,8 +9,8 @@ const mapStateToProps = state => {
   };
 }
 
-const MyAppContainer = props => { 
-  // console.log(props.state)     
+const MyAppContainer = props => {
+  // console.log(props.state)
   return(
     <App state={props.state}/>
   )
